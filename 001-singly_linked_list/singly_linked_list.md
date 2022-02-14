@@ -159,3 +159,56 @@ set(index, val){
     return false;
 }
 ```
+
+---
+
+## **`Insert`**
+
+Adding a node to the Linked List at a specific position.
+
+
+## **`Insert pseudocode`**
+
+ - If the index is less than zero or greater than the length, return false.
+
+ - If the index is the same as the length, push a new node to the end of the list.
+
+ - If the index is 0, unshift a new node to the start of the list.
+
+ - Otherwise, using the get method, access the node at the index - 1.
+
+ - Set the next property on that node to be the new node.
+
+ - Set the next property on the new node to be the previous next.
+
+ - Increment the length.
+
+ - Return true.
+
+ ```js
+insert(index, val){
+    if(index < 0 || index > this.length) return false;
+    if(index === this.length) return !!this.push(val);
+    if(index === 0) return !!this.unshift(val);
+    
+    var newNode = new Node(val);
+    var prev = this.get(index - 1);
+    var temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
+}
+ ```
+ ---
+## **`Remove`**
+Removing a node from the Linked List at a specific position.
+
+### **`Remove pseudocode`**
+- If the index is less than zero or greater than the length, return undefined
+- If the index is the same as the length-1, pop
+- If the index is 0, shift
+- Otherwise, using the get method, access the node at the index - 1
+- Set the next property on that node to be the next of the next node
+- Decrement the length
+- Return the value of the node removed
