@@ -1,3 +1,14 @@
+
+## Node in Linked list.
+```js
+class Node{
+    constructor(val){
+        this.val = val;
+        this.next = null;
+    }
+}
+```
+
 ## **What is a linked list?**
 
 - A data structure that contains
@@ -5,13 +16,23 @@
   - tail and
   - length property.
 
+
 ---
 
 ## **`Singly Linked List`**
 
 - Linked Lists consist of nodes, and each node has a value and a pointer to another node or null.
 
---- 
+```js
+class SinglyLinkedList{
+    constructor(){
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+}
+```
+---
 
 ## Pushing
 
@@ -42,9 +63,13 @@ push(value){
 ```
 
 ---
+
 ## **`Popping`**
+
 - Removing a node from the end of the Linked List!
+
 ## **`Popping pseudocode`**
+
 - If there are no nodes in the list, return undefined
 - Loop through the list until you reach the tail
 - Set the next property of the 2nd to last node to be null
@@ -72,16 +97,21 @@ push(value){
         return current;
     }
 ```
+
 ---
+
 ## **`Shifting`**
+
 - Removing a new node from the beginning of the Linked List!
 
 ## **`Shifting pseudocode`**
+
 - If there are no nodes, return undefined
 - Store the current head property in a variable
 - Set the head property to be the current head's next property
 - Decrement the length by 1
 - Return the value of the node removed
+
 ```js
   shift(){
         if(!this.head) return undefined;
@@ -96,6 +126,7 @@ push(value){
 ```
 
 ---
+
 ## **`Unshifting pseudocode`**
 
 - This function should accept a value
@@ -166,45 +197,48 @@ set(index, val){
 
 Adding a node to the Linked List at a specific position.
 
-
 ## **`Insert pseudocode`**
 
- - If the index is less than zero or greater than the length, return false.
+- If the index is less than zero or greater than the length, return false.
 
- - If the index is the same as the length, push a new node to the end of the list.
+- If the index is the same as the length, push a new node to the end of the list.
 
- - If the index is 0, unshift a new node to the start of the list.
+- If the index is 0, unshift a new node to the start of the list.
 
- - Otherwise, using the get method, access the node at the index - 1.
+- Otherwise, using the get method, access the node at the index - 1.
 
- - Set the next property on that node to be the new node.
+- Set the next property on that node to be the new node.
 
- - Set the next property on the new node to be the previous next.
+- Set the next property on the new node to be the previous next.
 
- - Increment the length.
+- Increment the length.
 
- - Return true.
+- Return true.
 
- ```js
+```js
 insert(index, val){
-    if(index < 0 || index > this.length) return false;
-    if(index === this.length) return !!this.push(val);
-    if(index === 0) return !!this.unshift(val);
-    
-    var newNode = new Node(val);
-    var prev = this.get(index - 1);
-    var temp = prev.next;
-    prev.next = newNode;
-    newNode.next = temp;
-    this.length++;
-    return true;
+   if(index < 0 || index > this.length) return false;
+   if(index === this.length) return !!this.push(val);
+   if(index === 0) return !!this.unshift(val);
+
+   var newNode = new Node(val);
+   var prev = this.get(index - 1);
+   var temp = prev.next;
+   prev.next = newNode;
+   newNode.next = temp;
+   this.length++;
+   return true;
 }
- ```
- ---
+```
+
+---
+
 ## **`Remove`**
+
 Removing a node from the Linked List at a specific position.
 
 ### **`Remove pseudocode`**
+
 - If the index is less than zero or greater than the length, return undefined
 - If the index is the same as the length-1, pop
 - If the index is 0, shift
@@ -212,3 +246,60 @@ Removing a node from the Linked List at a specific position.
 - Set the next property on that node to be the next of the next node
 - Decrement the length
 - Return the value of the node removed
+
+```js
+    remove(index){
+        if(index < 0 || index >= this.length) return undefined;
+        if(index === 0) return this.shift();
+        if(index === this.length - 1) return this.pop();
+        var previousNode = this.get(index - 1);
+        var removed = previousNode.next;
+        previousNode.next = removed.next;
+        this.length--;
+        return removed;
+    }
+```
+----
+
+## **`Reverse pseudocode`**
+- Swap the head and tail
+- Create a variable called next
+- Create a variable called prev
+- Create a variable called node and initialize it to the head property
+- Loop through the list
+- Set next to be the next property on whatever node is
+- Set the next property on the node to be whatever prev is
+- Set prev to be the value of the node variable
+- Set the node variable to be the value of the next variable
+- Once you have finished looping, return the list
+```js
+    reverse(){
+      var node = this.head;
+      this.head = this.tail;
+      this.tail = node;
+      var next;
+      var prev = null;
+      for(var i = 0; i < this.length; i++){
+        next = node.next;
+        node.next = prev;
+        prev = node;
+        node = next;
+      }
+      return this;
+    }
+```
+---
+
+To check the current reverse structor.
+
+```js
+    print(){
+        var arr = [];
+        var current = this.head
+        while(current){
+            arr.push(current.val)
+            current = current.next
+        }
+        console.log(arr);
+    }
+```
