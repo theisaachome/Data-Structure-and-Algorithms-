@@ -64,3 +64,21 @@ Removing a node from the end of the Doubly Linked List
 - Set the newTail's next to null
 - Decrement the length
 - Return the value removed
+
+```js
+  pop(){
+        if(!this.head) return undefined;
+        let poppedNode = this.taill;
+        if(this.length === 1){
+            this.head=null;
+            this.tail=null;
+        }
+        else{
+            this.tail = poppedNode.pre;
+            this.tail.next = null;
+            poppedNode.pre = null;
+        }
+        this.length --;
+        return poppedNode;
+    }
+```
