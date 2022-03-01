@@ -1,6 +1,9 @@
 # Doubly Linked List
 ### Table of Contents
-- [Pushing](#pushing)
+- [Push](#push)
+- [Pop](#pop)
+- [Shift](#shift)
+- [Unshift](#unshift)
 
 
 ---
@@ -23,7 +26,7 @@ class DoublyLinkedList{
     }
 }
 ```
-## PUSHING
+## *PUSH*
 Adding a node to the end of the Doubly Linked List
 
 
@@ -53,7 +56,7 @@ push(value){
 
 ---
 
-## POPPING
+## Pop
 Removing a node from the end of the Doubly Linked List
 
 ## Popping pseudocode
@@ -68,17 +71,83 @@ Removing a node from the end of the Doubly Linked List
 ```js
   pop(){
         if(!this.head) return undefined;
-        let poppedNode = this.taill;
+        let currentTail = this.tail;
         if(this.length === 1){
             this.head=null;
             this.tail=null;
         }
         else{
-            this.tail = poppedNode.pre;
+            this.tail = currentTail.prev;
             this.tail.next = null;
-            poppedNode.pre = null;
+            currentTail.prev = null;
         }
         this.length --;
         return poppedNode;
     }
+```
+
+---
+## **Shift**
+Removing a node from the beginning of the Doubly Linked List
+
+
+### **Shifting pseudocode**
+- If length is 0, return undefined
+- Store the current head property in a variable (we'll call it old head)
+- If the length is one
+- set the head to be null
+- set the tail to be null
+- Update the head to be the next of the old head
+- Set the head's prev property to null
+- Set the old head's next to null
+- Decrement the length
+- Return old head
+
+```js
+ shift(){
+        if(this.length ===0) return undefined;
+        let oldHead = this.head;
+        if(this.length ===1){
+            this.head = null;
+            this.tail = null;
+        }else{
+            this.head = oldHead.next;
+            this.head.pre = null;
+            oldHead.next =null;
+        }
+        this.length --;
+        return oldHead;
+    }
+```
+
+## unshift
+Adding a node to the beginning of the Doubly Linked List
+
+
+### Unshifting pseudocode
+- Create a new node with the value passed to the function
+- If the length is 0
+    - Set the head to be the new node
+    - Set the tail to be the new node
+- Otherwise
+    - Set the prev property on the head of the list to be the new node
+    - Set the next property on the new node to be the head property 
+    - Update the head to be the new node
+- Increment the length
+- Return the list
+
+```js
+unshift(value){
+        let newNode = new Node(value);
+        if(this.length ===0){
+            this.head = newNode;
+            this.tail = newNode;
+        }else{
+            this.head.prev = newNode;
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length ++;
+        return this;
+}
 ```
