@@ -166,4 +166,84 @@ Accessing a node in a Doubly Linked List by its position
 - Return the node once it is found
 - If the index is greater than half the length of the list
 - ​Loop through the list starting from the tail and loop towards the middle
-- Return the node once it is found
+- Return the node once it is found.
+
+```js
+ get(index){
+    let count =0;
+    let current = null;
+    if(index < 0 || index >= this.length)return null;
+    if(index <= this.length / 2){
+        count =0;
+        current = this.head;
+        while(count !==index){
+            current = current.next;
+            count ++;
+        }
+    }else{
+        count = this.length -1;
+        current = this.tail;
+        while(count !== index){
+            current = current.prev;
+            count --;
+        }
+    }
+    return current;
+}
+```
+
+--- 
+
+## **Set**
+Replacing the value of a node to the in a Doubly Linked List
+
+### Set pseudocode
+- Create a variable which is the result of the get method at the index passed to the function
+- If the get method returns a valid node, set the value of that node to be the value passed to the function
+- Return true
+- Otherwise, return false
+
+```js
+ set(index,value){
+    let foundNode = this.get(index);
+    if(foundNode !== null){
+        foundNode.value = value;
+        return true;
+    }
+    return false;
+}
+```
+
+---
+
+## **Insert**
+Adding a node in a Doubly Linked List by a certain position
+
+### **Insert pseudocode**
+
+- If the index is less than zero or greater than or equal to the length return false
+- If the index is 0, unshift
+- If the index is the same as the length, push
+- Use the get method to access the index -1
+- Set the next and prev properties on the correct nodes to link everything together
+- Increment the length 
+- Return true
+
+```js
+insert(index,value){
+     if(index<0 || index > this.length) return false;
+     if(index ===0 )return !!this.unshift(value);
+     if(index === this.length) return !!this.push(value);
+
+     let beforeNode = this.get(index-1);
+     let afterNode = beforeNode.next;
+
+     let newNode = new Node(value);
+
+     beforeNode.next = newNode, newNode.prev = beforeNode;
+     afterNode.prev = newNode, newNode.next = afterNode;
+     
+     this.length ++;
+     return true;
+ }
+```
