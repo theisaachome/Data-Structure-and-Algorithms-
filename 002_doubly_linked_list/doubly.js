@@ -115,6 +115,23 @@ class DoublyLinkedList {
 
         return true;
     }
+
+    remove(index){
+        if(index < 0 || index >= this.length) return undefined;
+        if(index ===0 ) return this.shift();
+        if(index === this.length-1) this.pop();
+
+        let foundNode = this.get(index);
+         foundNode.prev.next = foundNode.next;
+         foundNode.next.prev = foundNode.prev;
+
+         foundNode.prev = null;
+         foundNode.next = null;
+
+         this.length --;
+
+         return foundNode;
+    }
 }
 
 let list = new DoublyLinkedList();
