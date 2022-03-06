@@ -81,3 +81,28 @@ Add a value to the top of the stack!
 ```
 
 ---
+
+## **Pop**
+Remove a value from the top of the stack!
+
+## Pop Pseudocode
+
+- If there are no nodes in the stack, return null
+- Create a temporary variable to store the first property on the stack
+- If there is only 1 node, set the first and last property to be null
+- If there is more than one node, set the first property to be the next property on the current first
+- Decrement the size by 1
+- Return the value of the node removed
+
+```js
+pop(){
+    if(!this.first) return null
+    let temp = this.first;
+    if(this.first ===this.last){
+        this.last = null;
+    }
+    this.first =this.first.next;
+    this.size--;
+    return temp.value;
+}
+```
