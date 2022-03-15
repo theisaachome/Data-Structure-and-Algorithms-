@@ -75,3 +75,67 @@ Lots of different applications!
 
 
 ## **Binary Trees**
+
+![binary tree](./binary-tree.png)
+
+### Binary Tree Example
+
+Lots of different applications as well!  
+- Decision Trees (true / false)
+- Database Indicies
+- Sorting Algorithms
+
+---
+
+## Not Binary Tree Example
+![not binary tree](./not-b-tree.png)
+
+----
+
+## **BINARY SEARCH TREES**
+
+### HOW BSTS WORK
+- Every parent node has at most two children
+- Every node to the left of a parent node is always less than the parent
+- Every node to the right of a parent node is always greater than the parent
+
+![binary search tree](./b-s-t.png)
+
+
+---
+
+## The BinarySearchTree Class
+
+```js
+class BinarySearchTree {
+    constructor(){
+        this.root = null;
+    }
+}
+```
+
+```js
+class Node {
+    constructor(value){
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+```
+
+## **Inserting a node**
+
+- Steps - Iteratively or Recursively
+- Create a new node
+- Starting at the root
+    - Check if there is a root, if not - the root now becomes that new node!
+    - If there is a root, check if the value of the new node is greater than or less than the value of the root
+    - If it is greater 
+        - Check to see if there is a node to the right
+        - If there is, move to that node and repeat these steps
+        - If there is not, add that node as the right property
+    - If it is less
+        - Check to see if there is a node to the left
+        - If there is, move to that node and repeat these steps
+        - If there is not, add that node as the left property
