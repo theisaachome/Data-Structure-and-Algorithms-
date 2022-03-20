@@ -19,7 +19,7 @@ class Node{
 
 ---
 
-## **`Singly Linked List`**
+## **Singly Linked List**
 
 - Linked Lists consist of nodes, and each node has a value and a pointer to another node or null.
 
@@ -34,11 +34,11 @@ class SinglyLinkedList{
 ```
 ---
 
-## Pushing
+## **Pushing**
 
 - Adding a new node to the end of the Linked List!
 
-## Pushing pseudocode
+### Pushing pseudocode
 
 - This function should accept a value
 - Create a new node using the value passed to the function
