@@ -64,11 +64,11 @@ push(value){
 
 ---
 
-## **`Popping`**
+## **Popping**
 
 - Removing a node from the end of the Linked List!
 
-## **`Popping pseudocode`**
+## **Popping pseudocode**
 
 - If there are no nodes in the list, return undefined
 - Loop through the list until you reach the tail
