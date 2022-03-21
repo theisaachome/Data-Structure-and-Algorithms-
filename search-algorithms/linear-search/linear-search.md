@@ -4,20 +4,29 @@
 
 Example:
 
-![step 1](./img/0.png)
+<!-- ![<img src="./img/0.png" width="250"/>](./img/0.png) -->
+
+<img src="./img/0.png" width="350"/>
+
+<!-- ![step 2](./img/1.png) -->
 
 
-![step 2](./img/1.png)
+<img src="./img/1.png" width="350"/>
+
+<!-- ![step 3](./img/2.png) -->
 
 
-![step 3](./img/2.png)
+
+<img src="./img/2.png" width="350"/>
+
+<!-- ![step 4](./img/3.png) -->
 
 
-![step 4](./img/3.png)
+<img src="./img/3.png" width="350"/>
 
+<!-- ![step 5](./img/4.png) -->
 
-![step 5](./img/4.png)
-
+<img src="./img/4.png" width="350"/>
 
 
 ## Linear Search Pseudocode
